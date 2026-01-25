@@ -94,7 +94,7 @@ function TeamCard({ member }: { member: any }) {
         )}
       </div>
       
-      <div className="p-6">
+      <div className="p-6 text-center">
         <h3 className="text-xl font-bold text-foreground mb-1">{member.name}</h3>
       </div>
     </div>
