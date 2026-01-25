@@ -38,9 +38,6 @@ export function Hero() {
             transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
             className="flex-1 max-w-2xl"
           >
-            <span className="inline-block py-1 px-3 rounded-full bg-accent/90 text-white text-sm font-medium tracking-wider uppercase mb-6 backdrop-blur-sm">
-              Est. 2024
-            </span>
             <h1 className="font-display text-4xl md:text-6xl text-white font-bold leading-tight mb-6 drop-shadow-lg">
               What is <span className="text-accent-foreground">Progoti</span>?
             </h1>
