@@ -33,8 +33,15 @@ export function Navbar() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16 md:h-20">
           <div className="flex-shrink-0 flex items-center">
-            <a href="#">
-              <img src={logoImg} alt="Progoti" className="h-10 md:h-12 w-auto" />
+            <a href="#" className="overflow-hidden">
+              <img 
+                src={logoImg} 
+                alt="Progoti" 
+                className={cn(
+                  "transition-all duration-500 ease-in-out w-auto object-cover object-top",
+                  scrolled ? "h-10 md:h-12 aspect-[1/1] w-[40px] md:w-[48px]" : "h-10 md:h-12"
+                )} 
+              />
             </a>
           </div>
 
