@@ -38,9 +38,6 @@ export function Hero() {
             transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
             className="flex-1 max-w-2xl"
           >
-            <h1 className="font-display text-4xl md:text-6xl text-white font-bold leading-tight mb-6 drop-shadow-lg">
-              What is <span className="text-accent-foreground">Progoti</span>?
-            </h1>
             <p className="text-lg md:text-xl text-white/90 mb-8 font-light leading-relaxed drop-shadow-md">
               Progoti is a professional network for early-career professionals. 
               We aim to connect members across diverse fields, foster mentorship, and celebrate cultural heritage 
