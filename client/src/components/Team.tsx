@@ -96,12 +96,7 @@ function TeamCard({ member }: { member: any }) {
       
       <div className="p-6">
         <h3 className="text-xl font-bold text-foreground mb-1">{member.name}</h3>
-        <p className="text-accent font-medium text-sm uppercase tracking-wide mb-3">{member.role}</p>
-        {member.bio && (
-          <p className="text-muted-foreground text-sm leading-relaxed line-clamp-2">
-            {member.bio}
-          </p>
-        )}
+        <p className="text-accent font-medium text-sm uppercase tracking-wide">{member.role}</p>
       </div>
     </div>
   );
