@@ -33,23 +33,7 @@ export function Navbar() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16 md:h-20">
           <div className="flex-shrink-0 flex items-center">
-            <a href="#" className="overflow-hidden">
-              <div 
-                className={cn(
-                  "transition-all duration-500 ease-in-out w-auto",
-                  scrolled ? "h-10 md:h-12 w-[40px] md:w-[48px] overflow-hidden" : "h-10 md:h-12"
-                )}
-              >
-                <img 
-                  src={logoImg} 
-                  alt="Progoti" 
-                  className={cn(
-                    "transition-all duration-500 ease-in-out w-auto h-full",
-                    scrolled ? "max-w-none scale-[2.5] origin-[center_18%]" : "object-contain"
-                  )} 
-                />
-              </div>
-            </a>
+            {/* Logo removed as per request */}
           </div>
 
           {/* Desktop Nav */}
