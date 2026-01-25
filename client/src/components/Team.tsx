@@ -26,9 +26,6 @@ export function Team() {
     <Section id="team" className="bg-secondary/30">
       <div className="text-center max-w-3xl mx-auto mb-16">
         <h2 className="text-4xl md:text-5xl mb-6">Meet Our Team</h2>
-        <p className="text-muted-foreground text-lg">
-          The dedicated individuals working behind the scenes to foster our community's growth.
-        </p>
       </div>
 
       {(!team || team.length === 0) ? (
