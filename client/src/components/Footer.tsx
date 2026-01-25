@@ -1,4 +1,4 @@
-import logoImg from "@assets/Progoti_full_logo_(1)_1769319651184.png";
+import logoImg from "@assets/Progoti_thumbnail_header_logo_1769321841361.png";
 import { Linkedin, Mail, Instagram, ExternalLink } from "lucide-react";
 
 export function Footer() {

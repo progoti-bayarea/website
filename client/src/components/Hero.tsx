@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { ArrowDown } from "lucide-react";
-import logoImg from "@assets/Progoti_full_logo_(1)_1769319651184.png";
+import logoImg from "@assets/Progoti_thumbnail_header_logo_1769321841361.png";
 
 export function Hero() {
   return (

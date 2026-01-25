@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
 import { cn } from "@/lib/utils";
-import logoImg from "@assets/Progoti_full_logo_(1)_1769319651184.png";
+import logoImg from "@assets/Progoti_thumbnail_header_logo_1769321841361.png";
 
 const navItems = [
   { name: "About", href: "#about" },
