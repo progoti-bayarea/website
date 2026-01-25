@@ -59,7 +59,7 @@ export function Connect() {
                     <ArrowRight className="w-5 h-5 ml-2 opacity-0 group-hover:opacity-100 -translate-x-2 group-hover:translate-x-0 transition-all" />
                   </a>
                   <p className="text-center text-xs text-white/50 mt-4">
-                    Open to all professionals interested in the Bengali community.
+                    Open to all professionals interested in the community.
                   </p>
                 </div>
               </div>

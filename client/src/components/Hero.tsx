@@ -42,7 +42,7 @@ export function Hero() {
               What is <span className="text-accent-foreground">Progoti</span>?
             </h1>
             <p className="text-lg md:text-xl text-white/90 mb-8 font-light leading-relaxed drop-shadow-md">
-              Progoti is a professional network for Bengali-origin early-career professionals. 
+              Progoti is a professional network for early-career professionals. 
               We aim to connect members across diverse fields, foster mentorship, and celebrate cultural heritage 
               while enabling career growth and collaboration.
             </p>
