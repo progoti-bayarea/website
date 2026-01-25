@@ -38,7 +38,7 @@ export function Team() {
           <div>
             <h3 className="text-2xl font-bold mb-8 text-primary/80">Core Team</h3>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-              {team.filter(m => m.role !== 'Advisor').sort((a, b) => {
+              {team.filter(m => m.role !== 'Advisor' && m.name !== 'Core Team Member').sort((a, b) => {
                 const order = ['Subhamoy Das', 'Richa Bhattacharya', 'Mohini Dutta', 'Sayane Shome'];
                 return order.indexOf(a.name) - order.indexOf(b.name);
               }).map((member) => (
