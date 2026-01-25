@@ -1,38 +1,54 @@
-import { type User, type InsertUser } from "@shared/schema";
-import { randomUUID } from "crypto";
 
-// modify the interface with any CRUD methods
-// you might need
+import { db } from "./db";
+import {
+  events,
+  teamMembers,
+  inquiries,
+  type InsertEvent,
+  type InsertTeamMember,
+  type InsertInquiry,
+  type Event,
+  type TeamMember
+} from "@shared/schema";
 
 export interface IStorage {
-  getUser(id: string): Promise<User | undefined>;
-  getUserByUsername(username: string): Promise<User | undefined>;
-  createUser(user: InsertUser): Promise<User>;
+  getEvents(): Promise<Event[]>;
+  getEvent(id: number): Promise<Event | undefined>;
+  getTeamMembers(): Promise<TeamMember[]>;
+  createInquiry(inquiry: InsertInquiry): Promise<void>;
+  
+  // Seed methods
+  createEvent(event: InsertEvent): Promise<Event>;
+  createTeamMember(member: InsertTeamMember): Promise<TeamMember>;
 }
 
-export class MemStorage implements IStorage {
-  private users: Map<string, User>;
-
-  constructor() {
-    this.users = new Map();
+export class DatabaseStorage implements IStorage {
+  async getEvents(): Promise<Event[]> {
+    return await db.select().from(events);
   }
 
-  async getUser(id: string): Promise<User | undefined> {
-    return this.users.get(id);
+  async getEvent(id: number): Promise<Event | undefined> {
+    const result = await db.select().from(events).where(require("drizzle-orm").eq(events.id, id));
+    return result[0];
   }
 
-  async getUserByUsername(username: string): Promise<User | undefined> {
-    return Array.from(this.users.values()).find(
-      (user) => user.username === username,
-    );
+  async getTeamMembers(): Promise<TeamMember[]> {
+    return await db.select().from(teamMembers);
   }
 
-  async createUser(insertUser: InsertUser): Promise<User> {
-    const id = randomUUID();
-    const user: User = { ...insertUser, id };
-    this.users.set(id, user);
-    return user;
+  async createInquiry(inquiry: InsertInquiry): Promise<void> {
+    await db.insert(inquiries).values(inquiry);
+  }
+
+  async createEvent(event: InsertEvent): Promise<Event> {
+    const [newEvent] = await db.insert(events).values(event).returning();
+    return newEvent;
+  }
+
+  async createTeamMember(member: InsertTeamMember): Promise<TeamMember> {
+    const [newMember] = await db.insert(teamMembers).values(member).returning();
+    return newMember;
   }
 }
 
-export const storage = new MemStorage();
+export const storage = new DatabaseStorage();
