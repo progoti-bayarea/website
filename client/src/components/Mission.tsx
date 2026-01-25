@@ -10,7 +10,7 @@ const objectives = [
   {
     icon: Briefcase,
     title: "Career Growth",
-    description: "providing resources, workshops, and career counseling to help members advance in their respective fields."
+    description: "Providing resources, workshops, and career counseling to help members advance in their respective fields."
   },
   {
     icon: Sprout,
