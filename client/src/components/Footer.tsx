@@ -1,5 +1,5 @@
 import logoImg from "@assets/Progoti_full_logo_(1)_1769319651184.png";
-import { Linkedin, Mail } from "lucide-react";
+import { Linkedin, Mail, Instagram, ExternalLink } from "lucide-react";
 
 export function Footer() {
   return (
@@ -27,22 +27,45 @@ export function Footer() {
           <div>
             <h3 className="font-display text-xl font-semibold mb-4 text-primary">Connect</h3>
             <div className="flex space-x-4">
-              <a href="#" className="p-2 bg-white rounded-full text-primary shadow-sm hover:shadow-md hover:bg-primary hover:text-white transition-all">
+              <a 
+                href="https://www.linkedin.com/company/progoti-bay-area" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="p-2 bg-white rounded-full text-primary shadow-sm hover:shadow-md hover:bg-primary hover:text-white transition-all"
+              >
                 <Linkedin className="w-5 h-5" />
+              </a>
+              <a 
+                href="https://www.instagram.com/progoti_bayarea/" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="p-2 bg-white rounded-full text-primary shadow-sm hover:shadow-md hover:bg-primary hover:text-white transition-all"
+              >
+                <Instagram className="w-5 h-5" />
               </a>
               <a href="mailto:contact@progoti.org" className="p-2 bg-white rounded-full text-primary shadow-sm hover:shadow-md hover:bg-primary hover:text-white transition-all">
                 <Mail className="w-5 h-5" />
               </a>
             </div>
-            <p className="mt-4 text-sm text-muted-foreground">
-              San Francisco Bay Area,<br />California
-            </p>
+            <div className="mt-6">
+              <p className="text-sm text-muted-foreground mb-2">Parent Organisation:</p>
+              <a 
+                href="https://aobforum.org/" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="inline-flex items-center text-primary font-medium hover:underline"
+              >
+                AoB Forum <ExternalLink className="w-3 h-3 ml-1" />
+              </a>
+            </div>
           </div>
         </div>
         
         <div className="pt-8 border-t border-border/50 text-center md:text-left flex flex-col md:flex-row justify-between items-center text-sm text-muted-foreground">
           <p>© {new Date().getFullYear()} Progoti. All rights reserved.</p>
-          <p className="mt-2 md:mt-0">Part of the Association of Bengalis (AoB)</p>
+          <p className="mt-2 md:mt-0 flex items-center gap-1">
+            Part of the <a href="https://aobforum.org/" target="_blank" rel="noopener noreferrer" className="hover:text-primary underline decoration-primary/30">Association of Bengalis (AoB)</a>
+          </p>
         </div>
       </div>
     </footer>

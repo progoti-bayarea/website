@@ -9,7 +9,15 @@ export function About() {
           <h2 className="text-4xl md:text-5xl mb-6 text-primary">Who We Are</h2>
           <div className="space-y-6 text-lg text-muted-foreground leading-relaxed">
             <p>
-              <strong className="text-foreground">Progoti</strong> is a dynamic affiliate program under the Association of Bengalis (AoB), 
+              <strong className="text-foreground">Progoti</strong> is a dynamic affiliate program under the {" "}
+              <a 
+                href="https://aobforum.org/" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="text-primary font-medium hover:underline"
+              >
+                Association of Bengalis (AoB)
+              </a>, 
               designed to bridge the gap between our rich cultural heritage and modern professional aspirations.
             </p>
             <p>
