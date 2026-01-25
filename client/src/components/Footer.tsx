@@ -7,10 +7,9 @@ export function Footer() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
           <div className="col-span-1 md:col-span-2">
-            <img src={logoImg} alt="Progoti" className="h-12 w-auto mb-6" />
-            <p className="text-muted-foreground text-lg max-w-sm">
-              Rooted in heritage, growing together. Building a professional community 
-              that honors our past while innovating for the future.
+            <p className="text-muted-foreground text-lg max-w-sm leading-relaxed">
+              <span className="text-primary font-semibold block mb-2">Rooted in Heritage, Growing Together.</span>
+              Empowering early-career professionals through a community that celebrates tradition while driving future-focused innovation.
             </p>
           </div>
           
