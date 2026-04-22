@@ -161,9 +161,13 @@ export function Events() {
         <div className="flex flex-col gap-8">
           {standaloneEvents.length > 0 && (
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-              {standaloneEvents.map((event) => (
-                <div
+              {standaloneEvents.map((event, index) => (
+                <motion.div
                   key={event.id}
+                  initial={{ opacity: 0, y: 24 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: "-60px" }}
+                  transition={{ duration: 0.45, delay: index * 0.1, ease: "easeOut" }}
                   className="group flex flex-col md:flex-row bg-card rounded-2xl overflow-hidden border border-border hover:border-primary/50 hover:shadow-lg hover:shadow-primary/5 transition-all duration-300"
                 >
                   <div className="md:w-2/5 relative h-48 md:h-auto bg-muted">
@@ -171,12 +175,20 @@ export function Events() {
                       <img
                         src={event.imageUrl}
                         alt={event.title}
-                        className="w-full h-full object-cover"
+                        className={cn(
+                          "w-full h-full object-cover transition-all duration-500",
+                          !event.isUpcoming && "grayscale-[40%] group-hover:grayscale-0"
+                        )}
                       />
                     )}
                     <div className="absolute top-4 left-4 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-md text-xs font-bold uppercase tracking-wider text-primary shadow-sm">
                       {event.date ? format(new Date(event.date), "MMM d") : "TBD"}
                     </div>
+                    {!event.isUpcoming && (
+                      <div className="absolute bottom-3 left-3 bg-black/60 backdrop-blur-sm px-2.5 py-1 rounded-md text-xs font-semibold text-white/80 tracking-wide">
+                        Past Event
+                      </div>
+                    )}
                   </div>
 
                   <div className="flex-1 p-6 flex flex-col">
@@ -209,7 +221,7 @@ export function Events() {
                       </div>
                     )}
                   </div>
-                </div>
+                </motion.div>
               ))}
             </div>
           )}
