@@ -1,0 +1,7 @@
+name = "progoti-contact"
+main = "worker/index.ts"
+compatibility_date = "2024-01-01"
+
+# Secrets are set via: wrangler secret put RESEND_API_KEY
+# and: wrangler secret put CONTACT_EMAIL
+# Never put actual secret values in this file.

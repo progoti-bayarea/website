@@ -3,7 +3,10 @@ import react from "@vitejs/plugin-react";
 import path from "path";
 import runtimeErrorOverlay from "@replit/vite-plugin-runtime-error-modal";
 
+const isGhPages = process.env.GITHUB_PAGES === "true";
+
 export default defineConfig({
+  base: isGhPages ? "/website/" : "/",
   plugins: [
     react(),
     runtimeErrorOverlay(),

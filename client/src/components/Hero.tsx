@@ -7,41 +7,54 @@ export function Hero() {
     <div className="relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* Background Image with Overlay */}
       <div className="absolute inset-0 z-0">
-        <img 
-          src="https://images.unsplash.com/photo-1542273917363-3b1817f69a2d?q=80&w=2074&auto=format&fit=crop" 
-          alt="Nature roots background" 
+        <img
+          src="https://images.unsplash.com/photo-1542273917363-3b1817f69a2d?q=80&w=2074&auto=format&fit=crop"
+          alt="Nature roots background"
           className="w-full h-full object-cover"
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/30 to-background" />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/20 to-background" />
       </div>
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex flex-col md:flex-row items-center justify-center gap-12 text-center md:text-left">
+        <div className="flex flex-col md:flex-row items-center justify-center gap-8 md:gap-12 text-center md:text-left">
           <motion.div
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
-            className="flex-shrink-0"
+            className="flex-shrink-0 relative"
           >
-            <div className="relative p-2 bg-white/10 backdrop-blur-md rounded-2xl border border-white/20 shadow-2xl">
-              <img 
-                src={logoImg} 
-                alt="Progoti Full Logo" 
-                className="w-64 md:w-80 lg:w-96 h-auto drop-shadow-2xl"
+            <div
+              className="w-40 sm:w-52 md:w-64 lg:w-80 overflow-hidden"
+              style={{
+                aspectRatio: "1 / 1",
+                maskImage: "radial-gradient(circle at 50% 50%, black 62%, transparent 78%)",
+                WebkitMaskImage: "radial-gradient(circle at 50% 50%, black 62%, transparent 78%)",
+              }}
+            >
+              <img
+                src={logoImg}
+                alt="Progoti Full Logo"
+                className="w-full"
+                style={{ height: "130%", objectFit: "cover", objectPosition: "top center" }}
               />
             </div>
           </motion.div>
 
           <motion.div
-            initial={{ opacity: 0, x: 30 }}
-            animate={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
             className="flex-1 max-w-2xl"
           >
-            <p className="text-lg md:text-xl text-white/90 mb-8 font-light leading-relaxed drop-shadow-md">
-              Progoti is a professional network for early-career professionals. 
-              We aim to connect members across diverse fields, foster mentorship, and celebrate cultural heritage 
-              while enabling career growth and collaboration.
+            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-display font-bold text-white mb-2 drop-shadow-lg break-words">
+              Progoti
+            </h1>
+            <p className="text-sm sm:text-base md:text-lg text-white/70 mb-4 md:mb-6 font-bold tracking-wide drop-shadow-md uppercase">
+              Rooted in Heritage, Growing Together
+            </p>
+            <p className="text-base md:text-lg lg:text-xl text-white/80 mb-6 md:mb-8 font-bold leading-relaxed drop-shadow-md">
+              A professional network for early-career professionals — connecting members across diverse fields,
+              fostering mentorship, and celebrating cultural heritage.
             </p>
             
             <div className="flex flex-col sm:flex-row items-center justify-center md:justify-start gap-4">

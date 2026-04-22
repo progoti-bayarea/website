@@ -9,10 +9,11 @@ export const events = pgTable("events", {
   id: serial("id").primaryKey(),
   title: text("title").notNull(),
   description: text("description").notNull(),
-  date: timestamp("date").notNull(),
+  date: timestamp("date"),
   location: text("location").notNull(),
   imageUrl: text("image_url"),
   isUpcoming: boolean("is_upcoming").default(true).notNull(),
+  registrationUrl: text("registration_url"),
 });
 
 export const teamMembers = pgTable("team_members", {
@@ -36,7 +37,16 @@ export const inquiries = pgTable("inquiries", {
 
 export const insertEventSchema = createInsertSchema(events).omit({ id: true });
 export const insertTeamMemberSchema = createInsertSchema(teamMembers).omit({ id: true });
-export const insertInquirySchema = createInsertSchema(inquiries).omit({ id: true, createdAt: true });
+const BAD_WORDS = ["fuck", "shit", "ass", "bitch", "cunt", "damn", "bastard", "dick", "piss", "crap"];
+const containsBadWord = (val: string) => BAD_WORDS.some(w => val.toLowerCase().includes(w));
+
+export const insertInquirySchema = createInsertSchema(inquiries)
+  .omit({ id: true, createdAt: true })
+  .extend({
+    name: z.string().min(1, "Name is required").refine(v => !containsBadWord(v), "Please keep it professional."),
+    email: z.string().min(1, "Email is required").email("Invalid email address"),
+    message: z.string().min(1, "Message is required").refine(v => !containsBadWord(v), "Please keep it professional."),
+  });
 
 // === TYPES ===
 

@@ -13,7 +13,7 @@ export function Section({ id, className, children, dark = false }: SectionProps)
     <section 
       id={id} 
       className={cn(
-        "py-20 md:py-32 px-4 sm:px-6 lg:px-8 overflow-hidden",
+        "py-12 md:py-16 px-4 sm:px-6 lg:px-8 overflow-x-hidden scroll-mt-20",
         dark ? "bg-primary text-primary-foreground" : "bg-background",
         className
       )}

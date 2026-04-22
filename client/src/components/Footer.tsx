@@ -1,11 +1,11 @@
 import logoImg from "@assets/Progoti_thumbnail_header_logo_1769321841361.png";
-import { Linkedin, Mail, Instagram, ExternalLink } from "lucide-react";
+import { Linkedin, Instagram, ExternalLink } from "lucide-react";
 
 export function Footer() {
   return (
     <footer className="bg-secondary/50 pt-16 pb-8 border-t border-border">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-8 md:gap-12 mb-12">
           <div className="col-span-1 md:col-span-2">
             <p className="text-muted-foreground text-lg max-w-sm leading-relaxed">
               <span className="text-primary font-semibold block mb-2">Rooted in Heritage, Growing Together.</span>
@@ -41,9 +41,6 @@ export function Footer() {
                 className="p-2 bg-white rounded-full text-primary shadow-sm hover:shadow-md hover:bg-primary hover:text-white transition-all"
               >
                 <Instagram className="w-5 h-5" />
-              </a>
-              <a href="mailto:contact@progoti.org" className="p-2 bg-white rounded-full text-primary shadow-sm hover:shadow-md hover:bg-primary hover:text-white transition-all">
-                <Mail className="w-5 h-5" />
               </a>
             </div>
             <div className="mt-6">

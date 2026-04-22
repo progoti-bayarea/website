@@ -1,54 +1,73 @@
 
-import { db } from "./db";
 import {
-  events,
-  teamMembers,
-  inquiries,
   type InsertEvent,
   type InsertTeamMember,
   type InsertInquiry,
   type Event,
-  type TeamMember
+  type TeamMember,
+  inquiries
 } from "@shared/schema";
+import { db } from "./db";
 
 export interface IStorage {
   getEvents(): Promise<Event[]>;
   getEvent(id: number): Promise<Event | undefined>;
   getTeamMembers(): Promise<TeamMember[]>;
   createInquiry(inquiry: InsertInquiry): Promise<void>;
-  
+
   // Seed methods
   createEvent(event: InsertEvent): Promise<Event>;
   createTeamMember(member: InsertTeamMember): Promise<TeamMember>;
 }
 
-export class DatabaseStorage implements IStorage {
+export class MemoryStorage implements IStorage {
+  private events: Event[] = [];
+  private teamMembers: TeamMember[] = [];
+  private inquiries: InsertInquiry[] = [];
+  private nextEventId = 1;
+  private nextMemberId = 1;
+
   async getEvents(): Promise<Event[]> {
-    return await db.select().from(events);
+    return this.events;
   }
 
   async getEvent(id: number): Promise<Event | undefined> {
-    const result = await db.select().from(events).where(require("drizzle-orm").eq(events.id, id));
-    return result[0];
+    return this.events.find(e => e.id === id);
   }
 
   async getTeamMembers(): Promise<TeamMember[]> {
-    return await db.select().from(teamMembers);
+    return this.teamMembers;
   }
 
   async createInquiry(inquiry: InsertInquiry): Promise<void> {
-    await db.insert(inquiries).values(inquiry);
+    this.inquiries.push(inquiry);
   }
 
   async createEvent(event: InsertEvent): Promise<Event> {
-    const [newEvent] = await db.insert(events).values(event).returning();
+    const newEvent: Event = { ...event, id: this.nextEventId++, imageUrl: event.imageUrl ?? null, date: event.date ?? null, isUpcoming: event.isUpcoming ?? true, registrationUrl: event.registrationUrl ?? null };
+    this.events.push(newEvent);
     return newEvent;
   }
 
   async createTeamMember(member: InsertTeamMember): Promise<TeamMember> {
-    const [newMember] = await db.insert(teamMembers).values(member).returning();
+    const newMember: TeamMember = {
+      ...member,
+      id: this.nextMemberId++,
+      bio: member.bio ?? null,
+      imageUrl: member.imageUrl ?? null,
+      linkedinUrl: member.linkedinUrl ?? null,
+    };
+    this.teamMembers.push(newMember);
     return newMember;
   }
 }
 
-export const storage = new DatabaseStorage();
+export class DatabaseStorage extends MemoryStorage {
+  async createInquiry(inquiry: InsertInquiry): Promise<void> {
+    await db!.insert(inquiries).values(inquiry);
+  }
+}
+
+export const storage: IStorage = process.env.DATABASE_URL
+  ? new DatabaseStorage()
+  : new MemoryStorage();

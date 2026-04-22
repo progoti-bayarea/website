@@ -36,7 +36,7 @@ export function Team() {
         <div className="space-y-16">
           {/* Core Team */}
           <div>
-            <h3 className="text-2xl font-bold mb-8 text-primary/80">Core Team</h3>
+            <h3 className="text-3xl md:text-4xl font-bold mb-8 text-accent">Core Team</h3>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
               {team.filter(m => m.role !== 'Advisor' && m.name !== 'Core Team Member').sort((a, b) => {
                 const order = ['Subhamoy Das', 'Richa Bhattacharya', 'Mohini Dutta', 'Sayane Shome'];
@@ -49,7 +49,7 @@ export function Team() {
 
           {/* Advisors */}
           <div>
-            <h3 className="text-2xl font-bold mb-8 text-primary/80">Advisors</h3>
+            <h3 className="text-3xl md:text-4xl font-bold mb-8 text-accent">Advisors</h3>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
               {team.filter(m => m.role === 'Advisor').map((member) => (
                 <TeamCard key={member.id} member={member} />
@@ -67,12 +67,12 @@ function TeamCard({ member }: { member: any }) {
     <div 
       className="group bg-card rounded-2xl overflow-hidden shadow-lg shadow-black/5 border border-border hover:shadow-xl hover:border-primary/20 transition-all duration-300"
     >
-      <div className="aspect-[4/3] overflow-hidden bg-muted relative">
+      <div className="aspect-[4/5] overflow-hidden bg-muted relative">
         {member.imageUrl ? (
-          <img 
-            src={member.imageUrl} 
-            alt={member.name} 
-            className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+          <img
+            src={member.imageUrl}
+            alt={member.name}
+            className="w-full h-full object-cover object-[center_20%] transition-transform duration-500 group-hover:scale-105"
           />
         ) : (
           <div className="w-full h-full flex items-center justify-center bg-primary/10 text-primary font-display text-4xl">
@@ -81,11 +81,11 @@ function TeamCard({ member }: { member: any }) {
         )}
         
         {member.linkedinUrl && (
-          <div className="absolute top-4 right-4 translate-y-[-150%] group-hover:translate-y-0 transition-transform duration-300">
-            <a 
+          <div className="absolute top-4 right-4 translate-y-0 md:translate-y-[-150%] group-hover:translate-y-0 transition-transform duration-300">
+            <a
               href={member.linkedinUrl}
               target="_blank"
-              rel="noopener noreferrer" 
+              rel="noopener noreferrer"
               className="p-2 bg-white rounded-full text-[#0077b5] shadow-md hover:bg-[#0077b5] hover:text-white transition-colors block"
             >
               <Linkedin className="w-5 h-5" />

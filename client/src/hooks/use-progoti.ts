@@ -1,49 +1,44 @@
-import { useQuery, useMutation } from "@tanstack/react-query";
-import { api, type InsertInquiry } from "@shared/routes";
+import { useMutation } from "@tanstack/react-query";
+import { insertInquirySchema, type InsertInquiry } from "@shared/routes";
 import { useToast } from "@/hooks/use-toast";
+import { EVENTS, TEAM_MEMBERS } from "@/data/static-data";
 
-// GET /api/events
 export function useEvents() {
-  return useQuery({
-    queryKey: [api.events.list.path],
-    queryFn: async () => {
-      const res = await fetch(api.events.list.path);
-      if (!res.ok) throw new Error("Failed to fetch events");
-      return api.events.list.responses[200].parse(await res.json());
-    },
-  });
+  return { data: EVENTS, isLoading: false, error: null };
 }
 
-// GET /api/team
 export function useTeam() {
-  return useQuery({
-    queryKey: [api.team.list.path],
-    queryFn: async () => {
-      const res = await fetch(api.team.list.path);
-      if (!res.ok) throw new Error("Failed to fetch team members");
-      return api.team.list.responses[200].parse(await res.json());
-    },
-  });
+  return { data: TEAM_MEMBERS, isLoading: false, error: null };
 }
 
-// POST /api/contact
+const WORKER_URL = import.meta.env.VITE_WORKER_URL as string | undefined;
+
 export function useSubmitInquiry() {
   const { toast } = useToast();
-  
+
   return useMutation({
     mutationFn: async (data: InsertInquiry) => {
-      const res = await fetch(api.contact.submit.path, {
+      const parsed = insertInquirySchema.safeParse(data);
+      if (!parsed.success) {
+        throw new Error(parsed.error.errors[0].message);
+      }
+
+      if (!WORKER_URL) {
+        throw new Error("Contact form is not configured yet. Please try again later.");
+      }
+
+      const res = await fetch(WORKER_URL, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(data),
+        body: JSON.stringify(parsed.data),
       });
-      
+
       if (!res.ok) {
-        const error = await res.json();
-        throw new Error(error.message || "Failed to submit inquiry");
+        const error = await res.json().catch(() => ({ message: "Failed to send message" }));
+        throw new Error(error.message || "Failed to send message");
       }
-      
-      return api.contact.submit.responses[201].parse(await res.json());
+
+      return res.json();
     },
     onSuccess: () => {
       toast({

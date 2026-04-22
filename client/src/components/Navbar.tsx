@@ -8,7 +8,6 @@ const navItems = [
   { name: "Mission", href: "#mission" },
   { name: "Team", href: "#team" },
   { name: "Events", href: "#events" },
-  { name: "Connect", href: "#connect" },
 ];
 
 export function Navbar() {
@@ -33,7 +32,15 @@ export function Navbar() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16 md:h-20">
           <div className="flex-shrink-0 flex items-center">
-            {/* Logo removed as per request */}
+            <span
+              className={cn(
+                "font-semibold text-3xl tracking-normal transition-all duration-300",
+                scrolled ? "text-primary opacity-100" : "opacity-0 pointer-events-none"
+              )}
+              style={{ fontFamily: "var(--font-display)", fontStyle: "normal", fontWeight: 600 }}
+            >
+              Progoti
+            </span>
           </div>
 
           {/* Desktop Nav */}
@@ -81,6 +88,13 @@ export function Navbar() {
                 {item.name}
               </a>
             ))}
+            <a
+              href="#connect"
+              className="block mt-2 px-3 py-3 rounded-md text-base font-semibold bg-primary text-primary-foreground text-center hover:bg-primary/90 transition-colors"
+              onClick={() => setIsOpen(false)}
+            >
+              Join Us
+            </a>
           </div>
         </div>
       )}
