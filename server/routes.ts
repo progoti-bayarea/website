@@ -79,7 +79,16 @@ async function seedDatabase() {
       isUpcoming: false
     });
 
-   await storage.createEvent({
+    await storage.createEvent({
+      title: "Coffee Chat",
+      description: "An informal community coffee chat — a relaxed afternoon to meet fellow professionals, share stories, and build new connections over a warm cup.",
+      date: new Date("2025-11-23T15:00:00"),
+      location: "Red Rock Coffee, Downtown Mountain View",
+      imageUrl: "/assets/coffee-chat.JPG",
+      isUpcoming: false
+    });
+
+    await storage.createEvent({
       title: "Hiking",
       description: "A community hike through the trails of Rancho Antonio County Park — a great way to unwind, connect with fellow professionals, and enjoy the outdoors together.",
       date: new Date("2026-02-01T09:00:00"),

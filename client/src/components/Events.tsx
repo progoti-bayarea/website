@@ -10,20 +10,21 @@ import { motion } from "framer-motion";
 
 const SERIES_PREFIX = "Career Navigation Series";
 
+const EVENT_IMAGE_POSITION: Record<number, string> = {
+  1: "50% 50%",
+  2: "50% 50%",
+  3: "50% 50%",
+  4: "50% 50%",
+};
+
 function parseSeriesEvent(event: Event) {
-  const match = event.title.match(/^Career Navigation Series #(\d+):\s*(.+)$/);
-  if (match) return { number: parseInt(match[1]), sessionTitle: match[2] };
-  if (event.title === `${SERIES_PREFIX} #4: Coming Soon`) return { number: 4, sessionTitle: "Coming Soon" };
-  if (event.title === `${SERIES_PREFIX} #5: Coming Soon`) return { number: 5, sessionTitle: "Coming Soon" };
+  const match = event.title.match(/^Career Navigation Series:\s*(.+)$/);
+  if (match) return { sessionTitle: match[1] };
   return null;
 }
 
 function SeriesSection({ events }: { events: Event[] }) {
-  const sorted = [...events].sort((a, b) => {
-    const na = parseSeriesEvent(a)?.number ?? 99;
-    const nb = parseSeriesEvent(b)?.number ?? 99;
-    return na - nb;
-  });
+  const sorted = [...events];
 
   return (
     <div className="border border-border rounded-2xl overflow-hidden">
@@ -32,6 +33,7 @@ function SeriesSection({ events }: { events: Event[] }) {
         <p className="text-sm text-muted-foreground mt-1">
           Five online sessions designed to accelerate your career — from landing the job to leading with impact.
         </p>
+        <p className="text-xs text-muted-foreground/70 mt-1">Remote · Dates to be announced</p>
       </div>
 
       <div className="divide-y divide-border">
@@ -61,7 +63,7 @@ function SeriesSection({ events }: { events: Event[] }) {
                   isComingSoon ? "bg-border text-muted-foreground" : "bg-primary/10 text-primary"
                 )}
               >
-                {isComingSoon ? <Lock className="w-3.5 h-3.5" /> : (parsed?.number ?? "?")}
+                {isComingSoon ? <Lock className="w-3.5 h-3.5" /> : (index + 1)}
               </motion.div>
 
               <div className="flex-1 min-w-0">
@@ -71,18 +73,6 @@ function SeriesSection({ events }: { events: Event[] }) {
                 <p className="text-xs text-muted-foreground mt-0.5">
                   {isComingSoon ? "Stay tuned — details coming soon" : event.description}
                 </p>
-              </div>
-
-              <div className="flex flex-col items-end gap-1 flex-shrink-0 text-xs text-muted-foreground">
-                <span className="flex items-center gap-1">
-                  <Calendar className="w-3 h-3 text-accent" />
-                  <span className="hidden xs:inline">{event.date ? format(new Date(event.date), "MMM d, yyyy") : "Date TBD"}</span>
-                  <span className="xs:hidden">{event.date ? format(new Date(event.date), "MMM d") : "TBD"}</span>
-                </span>
-                <span className="flex items-center gap-1">
-                  <MapPin className="w-3 h-3 text-accent" />
-                  {event.location}
-                </span>
               </div>
 
               {!isComingSoon && event.registrationUrl && (
@@ -175,6 +165,7 @@ export function Events() {
                       <img
                         src={event.imageUrl}
                         alt={event.title}
+                        style={{ objectPosition: EVENT_IMAGE_POSITION[event.id] ?? "50% 50%" }}
                         className={cn(
                           "w-full h-full object-cover transition-all duration-500",
                           !event.isUpcoming && "grayscale-[40%] group-hover:grayscale-0"
@@ -182,7 +173,7 @@ export function Events() {
                       />
                     )}
                     <div className="absolute top-4 left-4 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-md text-xs font-bold uppercase tracking-wider text-primary shadow-sm">
-                      {event.date ? format(new Date(event.date), "MMM d") : "TBD"}
+                      {event.date ? format(new Date(event.date), "MMM d, yyyy") : "TBA"}
                     </div>
                     {!event.isUpcoming && (
                       <div className="absolute bottom-3 left-3 bg-black/60 backdrop-blur-sm px-2.5 py-1 rounded-md text-xs font-semibold text-white/80 tracking-wide">
@@ -203,7 +194,7 @@ export function Events() {
                       <div className="flex flex-col gap-2 text-sm text-muted-foreground/80">
                         <div className="flex items-center gap-2">
                           <Calendar className="w-4 h-4 text-accent" />
-                          <span>{event.date ? format(new Date(event.date), "MMMM d, yyyy • h:mm a") : "Date TBD"}</span>
+                          <span>{event.date ? format(new Date(event.date), "MMMM d, yyyy • h:mm a") : "Date TBA"}</span>
                         </div>
                         <div className="flex items-center gap-2">
                           <MapPin className="w-4 h-4 text-accent" />

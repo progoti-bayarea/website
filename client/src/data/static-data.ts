@@ -14,6 +14,17 @@ export const EVENTS: Event[] = [
   },
   {
     id: 2,
+    title: "Coffee Chat",
+    description:
+      "An informal community coffee chat — a relaxed afternoon to meet fellow professionals, share stories, and build new connections over a warm cup.",
+    date: new Date("2025-11-23T15:00:00"),
+    location: "Red Rock Coffee, Downtown Mountain View",
+    imageUrl: "/assets/coffee-chat.JPG",
+    isUpcoming: false,
+    registrationUrl: null,
+  },
+  {
+    id: 4,
     title: "Hiking",
     description:
       "A community hike through the trails of Rancho Antonio County Park — a great way to unwind, connect with fellow professionals, and enjoy the outdoors together.",
@@ -25,21 +36,21 @@ export const EVENTS: Event[] = [
   },
   {
     id: 3,
-    title: "Career Navigation Series #1: Recruiting & Resume Workshop",
+    title: "Career Navigation Series: Recruiting & Resume Workshop",
     description:
       "Learn what hiring managers really look for, sharpen your resume, and get your questions answered in an open Q&A.",
-    date: new Date("2026-05-30T18:00:00"),
+    date: null,
     location: "Remote",
     imageUrl: null,
     isUpcoming: true,
     registrationUrl: null,
   },
   {
-    id: 4,
-    title: "Career Navigation Series #2: Building a Network & Being Seen",
+    id: 8,
+    title: "Career Navigation Series: Building a Network & Being Seen",
     description:
       "Build meaningful connections, raise your visibility, and learn how to get noticed in your field.",
-    date: new Date("2026-05-31T18:00:00"),
+    date: null,
     location: "Remote",
     imageUrl: null,
     isUpcoming: true,
@@ -47,10 +58,10 @@ export const EVENTS: Event[] = [
   },
   {
     id: 5,
-    title: "Career Navigation Series #3: AI Productivity with OpenClaw",
+    title: "Career Navigation Series: AI Productivity with OpenClaw",
     description:
       "A live walkthrough of OpenClaw and how to use it to supercharge your everyday productivity.",
-    date: new Date("2026-06-06T18:00:00"),
+    date: null,
     location: "Remote",
     imageUrl: null,
     isUpcoming: true,
@@ -58,10 +69,10 @@ export const EVENTS: Event[] = [
   },
   {
     id: 6,
-    title: "Career Navigation Series #4: Coming Soon",
+    title: "Career Navigation Series: From Vision to Venture — Entrepreneurship in Practice",
     description:
-      "Something exciting is on the way. Stay tuned for details on our next session!",
-    date: new Date("2026-06-07T18:00:00"),
+      "An experienced entrepreneur shares their journey — the wins, the pivots, and the lessons — followed by an open Q&A.",
+    date: null,
     location: "Remote",
     imageUrl: null,
     isUpcoming: true,
@@ -69,10 +80,10 @@ export const EVENTS: Event[] = [
   },
   {
     id: 7,
-    title: "Career Navigation Series #5: Coming Soon",
+    title: "Career Navigation Series: ADDA — Community Social & Game Night",
     description:
-      "Something exciting is on the way. Stay tuned for details on our final session!",
-    date: new Date("2026-06-13T18:00:00"),
+      "A community hangout with rotating breakout groups, games, and new connections.",
+    date: null,
     location: "Remote",
     imageUrl: null,
     isUpcoming: true,

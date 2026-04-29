@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { ArrowDown } from "lucide-react";
-import logoImg from "@assets/Progoti_thumbnail_header_logo_1769321841361.png";
+import logoImg from "@assets/progoti-logo-transparent.png";
 
 export function Hero() {
   return (
@@ -24,18 +24,13 @@ export function Hero() {
             className="flex-shrink-0 relative"
           >
             <div
-              className="w-40 sm:w-52 md:w-64 lg:w-80 overflow-hidden"
-              style={{
-                aspectRatio: "1 / 1",
-                maskImage: "radial-gradient(circle at 50% 50%, black 62%, transparent 78%)",
-                WebkitMaskImage: "radial-gradient(circle at 50% 50%, black 62%, transparent 78%)",
-              }}
+              className="w-52 sm:w-64 md:w-80 lg:w-96"
+              style={{ aspectRatio: "1 / 1" }}
             >
               <img
                 src={logoImg}
                 alt="Progoti Full Logo"
-                className="w-full"
-                style={{ height: "130%", objectFit: "cover", objectPosition: "top center" }}
+                className="w-full h-full object-contain"
               />
             </div>
           </motion.div>
