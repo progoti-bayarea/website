@@ -1,4 +1,12 @@
 import type { Event, TeamMember } from "@shared/schema";
+import edenGardensImg from "@assets/Eden_Gardens.jpg";
+import coffeeChatImg from "@assets/coffee-chat.JPG";
+import hikingImg from "@assets/Hiking_Rancho_Antonio.JPG";
+import subhamoyImg from "@assets/Subhamoy_Das_1769321243254.jpg";
+import richaImg from "@assets/Richa_Bhattacharya_1769321243255.png";
+import mohiniImg from "@assets/Mohini_Dutta_1769321243256.png";
+import sayaneImg from "@assets/sayane_1769321243255.png";
+import bibekImg from "@assets/mugshot-2_1769321243255.JPG";
 
 export const EVENTS: Event[] = [
   {
@@ -8,7 +16,7 @@ export const EVENTS: Event[] = [
       "Panel discussion with C-suite leaders, senior engineers, entrepreneurs, and professionals from parallel domains sharing real-world insights on navigating industry trends.",
     date: new Date("2025-10-25T12:00:00"),
     location: "Eden Gardens Restaurant, San Jose",
-    imageUrl: "/assets/Eden_Gardens.jpg",
+    imageUrl: edenGardensImg,
     isUpcoming: false,
     registrationUrl: null,
   },
@@ -19,7 +27,7 @@ export const EVENTS: Event[] = [
       "An informal community coffee chat — a relaxed afternoon to meet fellow professionals, share stories, and build new connections over a warm cup.",
     date: new Date("2025-11-23T15:00:00"),
     location: "Red Rock Coffee, Downtown Mountain View",
-    imageUrl: "/assets/coffee-chat.JPG",
+    imageUrl: coffeeChatImg,
     isUpcoming: false,
     registrationUrl: null,
   },
@@ -30,7 +38,7 @@ export const EVENTS: Event[] = [
       "A community hike through the trails of Rancho Antonio County Park — a great way to unwind, connect with fellow professionals, and enjoy the outdoors together.",
     date: new Date("2026-02-01T09:00:00"),
     location: "Rancho Antonio County Park, Cupertino",
-    imageUrl: "/assets/Hiking_Rancho_Antonio.JPG",
+    imageUrl: hikingImg,
     isUpcoming: false,
     registrationUrl: null,
   },
@@ -97,7 +105,7 @@ export const TEAM_MEMBERS: TeamMember[] = [
     name: "Subhamoy Das",
     role: "Core Team",
     bio: "Senior research scientist at Terremoto Biosciences developing covalent small molecule inhibitors for breast and prostate cancers. Ph.D. in Biomedical Engineering from UT Austin, postdoc from Stanford University.",
-    imageUrl: "/assets/Subhamoy_Das_1769321243254.jpg",
+    imageUrl: subhamoyImg,
     linkedinUrl: "https://www.linkedin.com/in/moydas/",
   },
   {
@@ -105,7 +113,7 @@ export const TEAM_MEMBERS: TeamMember[] = [
     name: "Richa Bhattacharya",
     role: "Core Team",
     bio: "Software Engineer at Amazon, building large-scale systems for the world's largest online marketplace. UC Berkeley graduate in Computer Science and Data Science.",
-    imageUrl: "/assets/Richa_Bhattacharya_1769321243255.png",
+    imageUrl: richaImg,
     linkedinUrl: "https://www.linkedin.com/in/richabhattacharya/",
   },
   {
@@ -113,7 +121,7 @@ export const TEAM_MEMBERS: TeamMember[] = [
     name: "Mohini Dutta",
     role: "Core Team",
     bio: "Software Engineer at SAP on the Replication Management Service team. UMD College Park graduate in Computer Science with experience at AWS and Asurion.",
-    imageUrl: "/assets/Mohini_Dutta_1769321243256.png",
+    imageUrl: mohiniImg,
     linkedinUrl: "https://www.linkedin.com/in/mohini-dutta-75b4a9178/",
   },
   {
@@ -121,7 +129,7 @@ export const TEAM_MEMBERS: TeamMember[] = [
     name: "Sayane Shome",
     role: "Core Team",
     bio: "Computational Researcher at Stanford University School of Medicine with a Ph.D. in Bioinformatics from Iowa State University. Stanford Postdoc Champion 2024.",
-    imageUrl: "/assets/sayane_1769321243255.png",
+    imageUrl: sayaneImg,
     linkedinUrl: "https://www.sayaneshome1.com/",
   },
   {
@@ -129,7 +137,7 @@ export const TEAM_MEMBERS: TeamMember[] = [
     name: "Bibek Das",
     role: "Advisor",
     bio: "Director of Products at Visa with 25+ years in IT and financial services. Co-founder of three Bay Area non-profits: Pashchimi, Dishari, and Association of Bengalis.",
-    imageUrl: "/assets/mugshot-2_1769321243255.JPG",
+    imageUrl: bibekImg,
     linkedinUrl: "https://www.linkedin.com/in/bibekdas",
   },
 ];
