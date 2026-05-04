@@ -44,9 +44,9 @@ function SeriesSection({ events }: { events: Event[] }) {
           return (
             <motion.div
               key={event.id}
-              initial={{ opacity: 0, y: 16 }}
+              initial={{ opacity: 0, y: 10 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-40px" }}
+              viewport={{ once: true, amount: 0.1 }}
               transition={{ duration: 0.35, delay: index * 0.07, ease: "easeOut" }}
               className={cn(
                 "flex flex-wrap items-center gap-3 sm:gap-5 px-4 sm:px-6 py-4 transition-colors",
@@ -54,10 +54,10 @@ function SeriesSection({ events }: { events: Event[] }) {
               )}
             >
               <motion.div
-                initial={{ scale: 0.6 }}
-                whileInView={{ scale: [0.6, 1.15, 1] }}
+                initial={{ scale: 0.75 }}
+                whileInView={{ scale: 1 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.4, delay: index * 0.07 + 0.1 }}
+                transition={{ duration: 0.3, delay: index * 0.07 + 0.1, ease: "easeOut" }}
                 className={cn(
                   "flex-shrink-0 w-8 h-8 rounded-full text-sm font-bold flex items-center justify-center",
                   isComingSoon ? "bg-border text-muted-foreground" : "bg-primary/10 text-primary"
@@ -154,9 +154,9 @@ export function Events() {
               {standaloneEvents.map((event, index) => (
                 <motion.div
                   key={event.id}
-                  initial={{ opacity: 0, y: 24 }}
+                  initial={{ opacity: 0, y: 16 }}
                   whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, margin: "-60px" }}
+                  viewport={{ once: true, amount: 0.1 }}
                   transition={{ duration: 0.45, delay: index * 0.1, ease: "easeOut" }}
                   className="group flex flex-col md:flex-row bg-card rounded-2xl overflow-hidden border border-border hover:border-primary/50 hover:shadow-lg hover:shadow-primary/5 transition-all duration-300"
                 >
