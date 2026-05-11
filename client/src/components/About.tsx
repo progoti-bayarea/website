@@ -37,7 +37,7 @@ export function About() {
             {[
               { value: "Bay Area", label: "Based in" },
               { value: "AoB", label: "Affiliate of" },
-              { value: "2024", label: "Founded" },
+              { value: "2025", label: "Founded" },
             ].map(({ value, label }, i) => (
               <>
                 {i > 0 && <div key={`sep-${i}`} className="w-px bg-border" />}
