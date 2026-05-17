@@ -130,7 +130,7 @@ export const TEAM_MEMBERS: TeamMember[] = [
     role: "Core Team",
     bio: "Computational Researcher at Stanford University School of Medicine with a Ph.D. in Bioinformatics from Iowa State University. Stanford Postdoc Champion 2024.",
     imageUrl: sayaneImg,
-    linkedinUrl: "https://www.sayaneshome1.com/",
+    linkedinUrl: "https://www.linkedin.com/in/sayaneshome/",
   },
   {
     id: 5,
