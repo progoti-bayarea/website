@@ -14,6 +14,7 @@ export const events = pgTable("events", {
   imageUrl: text("image_url"),
   isUpcoming: boolean("is_upcoming").default(true).notNull(),
   registrationUrl: text("registration_url"),
+  speaker: text("speaker"),
 });
 
 export const teamMembers = pgTable("team_members", {

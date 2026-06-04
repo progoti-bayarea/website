@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Section } from "./ui/section";
 import { useEvents } from "@/hooks/use-progoti";
-import { Calendar, MapPin, ArrowRight, Lock } from "lucide-react";
+import { Calendar, MapPin, ArrowRight, Lock, Mic } from "lucide-react";
 import { Skeleton } from "@/components/ui/skeleton";
 import { cn } from "@/lib/utils";
 import { format } from "date-fns";
@@ -31,9 +31,9 @@ function SeriesSection({ events, isPast }: { events: Event[]; isPast?: boolean }
       <div className="bg-secondary/40 px-6 py-5 border-b border-border">
         <h3 className="text-xl font-display font-bold text-foreground">{SERIES_PREFIX}</h3>
         <p className="text-sm text-muted-foreground mt-1">
-          Five online sessions designed to accelerate your career — from landing the job to leading with impact.
+          Five sessions designed to accelerate your career — from landing the job to leading with impact.
         </p>
-        <p className="text-xs text-muted-foreground/70 mt-1">Remote · Dates to be announced</p>
+        <p className="text-xs text-muted-foreground/70 mt-1">June – August 2026</p>
       </div>
 
       <div className="divide-y divide-border">
@@ -62,6 +62,24 @@ function SeriesSection({ events, isPast }: { events: Event[]; isPast?: boolean }
                 <p className="text-xs text-muted-foreground mt-0.5">
                   {isComingSoon ? "Stay tuned — details coming soon" : event.description}
                 </p>
+                {!isComingSoon && (
+                  <div className="flex flex-wrap items-center gap-x-3 gap-y-1 mt-1.5">
+                    <span className="flex items-center gap-1 text-xs text-muted-foreground/80">
+                      <Calendar className="w-3 h-3 text-accent flex-shrink-0" />
+                      {event.date ? format(new Date(event.date), "MMM d, yyyy · h:mm a") : "Date TBA"}
+                    </span>
+                    <span className="flex items-center gap-1 text-xs text-muted-foreground/80">
+                      <MapPin className="w-3 h-3 text-accent flex-shrink-0" />
+                      {event.location}
+                    </span>
+                    {event.speaker && (
+                      <span className="flex items-center gap-1 text-xs font-medium text-primary/80 italic">
+                        <Mic className="w-3 h-3 flex-shrink-0" />
+                        {event.speaker}
+                      </span>
+                    )}
+                  </div>
+                )}
               </div>
 
               {!isComingSoon && event.registrationUrl && (
