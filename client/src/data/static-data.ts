@@ -96,7 +96,7 @@ export const EVENTS: Event[] = [
     description:
       "Join us for a relaxed community hangout with games, breakout groups, and opportunities to connect with fellow members",
     date: new Date("2026-08-01T16:00:00"),
-    location: "In-Person — Venue TBA",
+    location: "In-Person — 3145 Porter Drive, Stanford Research Park, Palo Alto, CA",
     imageUrl: null,
     isUpcoming: true,
     registrationUrl: null,
