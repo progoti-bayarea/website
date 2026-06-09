@@ -4,6 +4,8 @@ export interface Env {
 }
 
 const ALLOWED_ORIGINS = [
+  "https://progoti.us",
+  "https://www.progoti.us",
   "https://progoti-bayarea.github.io",
   "http://localhost:5173",
   "http://localhost:4173",
