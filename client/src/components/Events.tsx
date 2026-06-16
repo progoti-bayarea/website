@@ -7,6 +7,7 @@ import { cn } from "@/lib/utils";
 import { format } from "date-fns";
 import type { Event } from "@shared/schema";
 import { motion } from "framer-motion";
+import frameLogoImg from "@assets/frame_logo.png";
 
 const SERIES_PREFIX = "Career Navigation Series";
 
@@ -34,6 +35,27 @@ function SeriesSection({ events, isPast }: { events: Event[]; isPast?: boolean }
           Five sessions designed to accelerate your career — from landing the job to leading with impact.
         </p>
         <p className="text-xs text-muted-foreground/70 mt-1">June – August 2026</p>
+
+        <div className="mt-4 flex items-start gap-3 rounded-xl border border-primary/20 bg-primary/5 px-4 py-3">
+          <img src={frameLogoImg} alt="FRAME logo" className="w-10 h-10 flex-shrink-0 object-contain mt-0.5" />
+          <div>
+            <p className="text-xs font-semibold text-foreground uppercase tracking-wide mb-1">Supporting a Greater Cause</p>
+            <p className="text-xs text-muted-foreground leading-relaxed">
+              Proceeds from this event support{" "}
+              <span className="font-semibold text-foreground">FRAME</span>{" "}
+              (Fellowship for Research, Academic Mentorship and Exploration) — a nonprofit initiative that helps talented, financially underserved students from public colleges in West Bengal, India access global science programs, research mentorships, and advanced learning resources.
+            </p>
+            <a
+              href="https://framebengal.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1 mt-1.5 text-xs font-semibold text-primary hover:underline"
+            >
+              Learn more at framebengal.com
+              <ArrowRight className="w-3 h-3" />
+            </a>
+          </div>
+        </div>
       </div>
 
       <div className="divide-y divide-border">

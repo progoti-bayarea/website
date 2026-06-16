@@ -77,6 +77,8 @@ export default {
     });
 
     if (!resendRes.ok) {
+      const resendError = await resendRes.text();
+      console.error("Resend error:", resendRes.status, resendError);
       return new Response(JSON.stringify({ message: "Failed to send email" }), {
         status: 500,
         headers: { ...headers, "Content-Type": "application/json" },
