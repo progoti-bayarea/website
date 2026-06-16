@@ -23,7 +23,7 @@ export function useSubmitInquiry() {
         throw new Error(parsed.error.errors[0].message);
       }
 
-      if (!WORKER_URL) {
+      if (!WORKER_URL?.trim()) {
         throw new Error("Contact form is not configured yet. Please try again later.");
       }
 
