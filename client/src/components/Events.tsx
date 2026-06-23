@@ -4,7 +4,7 @@ import { useEvents } from "@/hooks/use-progoti";
 import { Calendar, MapPin, ArrowRight, Lock, Mic } from "lucide-react";
 import { Skeleton } from "@/components/ui/skeleton";
 import { cn } from "@/lib/utils";
-import { format } from "date-fns";
+import { format, addHours } from "date-fns";
 import type { Event } from "@shared/schema";
 import { motion } from "framer-motion";
 import frameLogoImg from "@assets/frame_logo.png";
@@ -17,6 +17,18 @@ const EVENT_IMAGE_POSITION: Record<number, string> = {
   3: "50% 50%",
   4: "50% 50%",
 };
+
+function formatEventTime(date: Date, isRemote: boolean): string {
+  if (!isRemote) return format(date, "MMMM d, yyyy • h:mm a");
+  const end = addHours(date, 1);
+  return `${format(date, "MMMM d, yyyy • h:mm")}–${format(end, "h:mm a")} Pacific Time`;
+}
+
+function formatEventTimeShort(date: Date, isRemote: boolean): string {
+  if (!isRemote) return format(date, "MMM d, yyyy · h:mm a");
+  const end = addHours(date, 1);
+  return `${format(date, "MMM d, yyyy · h:mm")}–${format(end, "h:mm a")} Pacific Time`;
+}
 
 function parseSeriesEvent(event: Event) {
   const match = event.title.match(/^Career Navigation Series:\s*(.+)$/);
@@ -100,7 +112,7 @@ function SeriesSection({ events, isPast }: { events: Event[]; isPast?: boolean }
                   <div className="flex flex-wrap items-center gap-x-3 gap-y-1 mt-1.5">
                     <span className="flex items-center gap-1 text-xs text-muted-foreground/80">
                       <Calendar className="w-3 h-3 text-accent flex-shrink-0" />
-                      {event.date ? format(new Date(event.date), "MMM d, yyyy · h:mm a") : "Date TBA"}
+                      {event.date ? formatEventTimeShort(new Date(event.date), event.location === "Remote") : "Date TBA"}
                     </span>
                     <span className="flex items-center gap-1 text-xs text-muted-foreground/80">
                       <MapPin className="w-3 h-3 text-accent flex-shrink-0" />
@@ -249,7 +261,7 @@ export function Events() {
                         <div className="flex flex-col gap-2 text-sm text-muted-foreground/80">
                           <div className="flex items-center gap-2">
                             <Calendar className="w-4 h-4 text-accent" />
-                            <span>{event.date ? format(new Date(event.date), "MMMM d, yyyy • h:mm a") : "Date TBA"}</span>
+                            <span>{event.date ? formatEventTime(new Date(event.date), event.location === "Remote") : "Date TBA"}</span>
                           </div>
                           <div className="flex items-center gap-2">
                             <MapPin className="w-4 h-4 text-accent" />
