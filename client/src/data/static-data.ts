@@ -43,30 +43,6 @@ export const EVENTS: Event[] = [
     registrationUrl: null,
   },
   {
-    id: 8,
-    title: "Career Navigation Series: Building a Network & Being Seen",
-    description:
-      "Discover how to build meaningful connections, increase your visibility, and stand out in your field",
-    date: new Date("2026-06-20T11:00:00"),
-    location: "Remote",
-    imageUrl: null,
-    isUpcoming: true,
-    registrationUrl: null,
-    speaker: "Bivas Nag",
-  },
-  {
-    id: 6,
-    title: "Career Navigation Series: Building Leadership Skills",
-    description:
-      "Develop the mindset and skills needed to lead with confidence and make a meaningful impact",
-    date: new Date("2026-06-27T13:00:00"),
-    location: "Remote",
-    imageUrl: null,
-    isUpcoming: true,
-    registrationUrl: null,
-    speaker: "Deb Bhattacharjee",
-  },
-  {
     id: 3,
     title: "Career Navigation Series: Recruiting & Resume Workshop",
     description:
@@ -80,15 +56,39 @@ export const EVENTS: Event[] = [
   },
   {
     id: 5,
-    title: "Career Navigation Series: AI Productivity with OpenClaw",
+    title: "Career Navigation Series: From AI-Anxious to AI-Fluent: A Practical Playbook for Your Career",
     description:
-      "A live walkthrough showing how you can leverage AI tools like OpenClaw to improve your everyday productivity",
+      "Pick up a practical AI framework, see live demos of AI put to real use, and get your questions answered in open Q&A",
     date: new Date("2026-07-12T11:00:00"),
     location: "Remote",
     imageUrl: null,
     isUpcoming: true,
     registrationUrl: null,
     speaker: "Sabyasachi Basu",
+  },
+  {
+    id: 8,
+    title: "Career Navigation Series: Building a Network & Being Seen",
+    description:
+      "Discover how to build meaningful connections, increase your visibility, and stand out in your field",
+    date: new Date("2026-07-18T11:00:00"),
+    location: "Remote",
+    imageUrl: null,
+    isUpcoming: true,
+    registrationUrl: null,
+    speaker: "Bivas Nag",
+  },
+  {
+    id: 6,
+    title: "Career Navigation Series: Building Leadership Skills",
+    description:
+      "Develop the mindset and skills needed to lead with confidence and make a meaningful impact",
+    date: new Date("2026-07-26T13:00:00"),
+    location: "Remote",
+    imageUrl: null,
+    isUpcoming: true,
+    registrationUrl: null,
+    speaker: "Deb Bhattacharjee",
   },
   {
     id: 7,

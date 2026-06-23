@@ -56,6 +56,18 @@ function SeriesSection({ events, isPast }: { events: Event[]; isPast?: boolean }
             </a>
           </div>
         </div>
+
+        <div className="mt-4">
+          <a
+            href="https://tinyurl.com/progotisummer26"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-primary text-primary-foreground text-sm font-semibold hover:bg-primary/90 transition-colors"
+          >
+            Register for the Series
+            <ArrowRight className="w-4 h-4" />
+          </a>
+        </div>
       </div>
 
       <div className="divide-y divide-border">
