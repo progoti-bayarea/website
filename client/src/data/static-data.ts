@@ -43,18 +43,6 @@ export const EVENTS: Event[] = [
     registrationUrl: null,
   },
   {
-    id: 3,
-    title: "Career Navigation Series: Recruiting & Resume Workshop",
-    description:
-      "Learn what hiring managers really look for, sharpen your resume, and get your questions answered in an open Q&A",
-    date: new Date("2026-07-11T12:30:00"),
-    location: "Remote",
-    imageUrl: null,
-    isUpcoming: true,
-    registrationUrl: null,
-    speaker: "Bitan Nandi Biswas",
-  },
-  {
     id: 5,
     title: "Career Navigation Series: From AI-Anxious to AI-Fluent: A Practical Playbook for Your Career",
     description:
@@ -101,6 +89,18 @@ export const EVENTS: Event[] = [
     isUpcoming: true,
     registrationUrl: null,
     speaker: null,
+  },
+  {
+    id: 3,
+    title: "Career Navigation Series: Recruiting & Resume Workshop",
+    description:
+      "Learn what hiring managers really look for, sharpen your resume, and get your questions answered in an open Q&A",
+    date: new Date("2026-08-22T12:30:00"),
+    location: "Remote",
+    imageUrl: null,
+    isUpcoming: true,
+    registrationUrl: null,
+    speaker: "Bitan Nandi Biswas",
   },
 ];
 
