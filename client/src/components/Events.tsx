@@ -44,9 +44,9 @@ function SeriesSection({ events, isPast }: { events: Event[]; isPast?: boolean }
       <div className="bg-secondary/40 px-6 py-5 border-b border-border">
         <h3 className="text-xl font-display font-bold text-foreground">{SERIES_PREFIX}</h3>
         <p className="text-sm text-muted-foreground mt-1">
-          Five sessions designed to accelerate your career — from landing the job to leading with impact.
+          Four sessions designed to accelerate your career — from landing the job to leading with impact.
         </p>
-        <p className="text-xs text-muted-foreground/70 mt-1">June – August 2026</p>
+        <p className="text-xs text-muted-foreground/70 mt-1">July – August 2026</p>
 
         <div className="mt-4 flex items-start gap-3 rounded-xl border border-primary/20 bg-primary/5 px-4 py-3">
           <img src={frameLogoImg} alt="FRAME logo" className="w-10 h-10 flex-shrink-0 object-contain mt-0.5" />
@@ -222,9 +222,81 @@ export function Events() {
         </div>
       ) : (
         <div className="flex flex-col gap-8">
-          {standaloneEvents.length > 0 && (
+          {standaloneEvents.filter(e => e.isUpcoming).map((event, index) => {
+            const featuredCardClass = "group flex flex-col md:flex-row bg-card rounded-2xl overflow-hidden border-2 border-primary/40 hover:border-primary/70 hover:shadow-xl hover:shadow-primary/10 transition-all duration-300";
+            const cardBody = (
+              <>
+                <div className="md:w-2/5 relative h-56 md:h-auto bg-muted">
+                  {event.imageUrl && (
+                    <img
+                      src={event.imageUrl}
+                      alt={event.title}
+                      style={{ objectPosition: EVENT_IMAGE_POSITION[event.id] ?? "50% 50%" }}
+                      className="w-full h-full object-cover transition-all duration-500"
+                    />
+                  )}
+                  <div className="absolute top-4 left-4 flex gap-2">
+                    <div className="bg-primary text-primary-foreground px-3 py-1 rounded-md text-xs font-bold uppercase tracking-wider shadow-sm">
+                      In-Person
+                    </div>
+                    <div className="bg-white/90 backdrop-blur-sm px-3 py-1 rounded-md text-xs font-bold uppercase tracking-wider text-primary shadow-sm">
+                      {event.date ? format(new Date(event.date), "MMM d, yyyy") : "TBA"}
+                    </div>
+                  </div>
+                </div>
+
+                <div className="flex-1 p-6 flex flex-col">
+                  <div className="mb-auto">
+                    <h3 className="text-2xl font-display font-bold text-foreground mb-2 group-hover:text-primary transition-colors">
+                      {event.title}
+                    </h3>
+                    <p className="text-muted-foreground text-sm mb-4">
+                      {event.description}
+                    </p>
+
+                    <div className="flex flex-col gap-2 text-sm text-muted-foreground/80">
+                      <div className="flex items-center gap-2">
+                        <Calendar className="w-4 h-4 text-accent" />
+                        <span>{event.date ? formatEventTime(new Date(event.date), false) : "Date TBA"}</span>
+                      </div>
+                      <div className="flex items-center gap-2">
+                        <MapPin className="w-4 h-4 text-accent" />
+                        <span>{event.location}</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  {event.registrationUrl && (
+                    <div className="mt-6 pt-6 border-t border-border flex justify-end">
+                      <a href={event.registrationUrl} target="_blank" rel="noopener noreferrer" className="flex items-center text-primary font-semibold text-sm hover:underline group/btn">
+                        Register Now
+                        <ArrowRight className="w-4 h-4 ml-1 transition-transform group-hover/btn:translate-x-1" />
+                      </a>
+                    </div>
+                  )}
+                </div>
+              </>
+            );
+
+            return (
+              <motion.div
+                key={event.id}
+                initial={{ opacity: 0, y: 16 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.1 }}
+                transition={{ duration: 0.45, delay: index * 0.1, ease: "easeOut" }}
+                className={featuredCardClass}
+              >
+                {cardBody}
+              </motion.div>
+            );
+          })}
+
+          {seriesEvents.length > 0 && <SeriesSection events={seriesEvents} isPast={isPast} />}
+
+          {standaloneEvents.filter(e => !e.isUpcoming).length > 0 && (
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-              {standaloneEvents.map((event, index) => {
+              {standaloneEvents.filter(e => !e.isUpcoming).map((event, index) => {
                 const cardBody = (
                   <>
                     <div className="md:w-2/5 relative h-48 md:h-auto bg-muted">
@@ -233,20 +305,15 @@ export function Events() {
                           src={event.imageUrl}
                           alt={event.title}
                           style={{ objectPosition: EVENT_IMAGE_POSITION[event.id] ?? "50% 50%" }}
-                          className={cn(
-                            "w-full h-full object-cover transition-all duration-500",
-                            !event.isUpcoming && "grayscale-[40%] group-hover:grayscale-0"
-                          )}
+                          className="w-full h-full object-cover grayscale-[40%] group-hover:grayscale-0 transition-all duration-500"
                         />
                       )}
                       <div className="absolute top-4 left-4 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-md text-xs font-bold uppercase tracking-wider text-primary shadow-sm">
                         {event.date ? format(new Date(event.date), "MMM d, yyyy") : "TBA"}
                       </div>
-                      {!event.isUpcoming && (
-                        <div className="absolute bottom-3 left-3 bg-black/60 backdrop-blur-sm px-2.5 py-1 rounded-md text-xs font-semibold text-white/80 tracking-wide">
-                          Past Event
-                        </div>
-                      )}
+                      <div className="absolute bottom-3 left-3 bg-black/60 backdrop-blur-sm px-2.5 py-1 rounded-md text-xs font-semibold text-white/80 tracking-wide">
+                        Past Event
+                      </div>
                     </div>
 
                     <div className="flex-1 p-6 flex flex-col">
@@ -269,40 +336,18 @@ export function Events() {
                           </div>
                         </div>
                       </div>
-
-                      {event.isUpcoming && event.registrationUrl && (
-                        <div className="mt-6 pt-6 border-t border-border flex justify-end">
-                          <a href={event.registrationUrl} target="_blank" rel="noopener noreferrer" className="flex items-center text-primary font-semibold text-sm hover:underline group/btn">
-                            Register Now
-                            <ArrowRight className="w-4 h-4 ml-1 transition-transform group-hover/btn:translate-x-1" />
-                          </a>
-                        </div>
-                      )}
                     </div>
                   </>
                 );
 
-                return isPast ? (
+                return (
                   <div key={event.id} className={cardClass}>
                     {cardBody}
                   </div>
-                ) : (
-                  <motion.div
-                    key={event.id}
-                    initial={{ opacity: 0, y: 16 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true, amount: 0.1 }}
-                    transition={{ duration: 0.45, delay: index * 0.1, ease: "easeOut" }}
-                    className={cardClass}
-                  >
-                    {cardBody}
-                  </motion.div>
                 );
               })}
             </div>
           )}
-
-          {seriesEvents.length > 0 && <SeriesSection events={seriesEvents} isPast={isPast} />}
         </div>
       )}
     </Section>
