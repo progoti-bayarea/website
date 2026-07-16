@@ -18,16 +18,36 @@ const EVENT_IMAGE_POSITION: Record<number, string> = {
   4: "50% 50%",
 };
 
-function formatEventTime(date: Date, isRemote: boolean): string {
-  if (!isRemote) return format(date, "MMMM d, yyyy • h:mm a");
-  const end = addHours(date, 1);
-  return `${format(date, "MMMM d, yyyy • h:mm")}–${format(end, "h:mm a")} Pacific Time`;
+// end hour offset (hours after start) for in-person events by id
+const EVENT_DURATION_HOURS: Record<number, number> = {
+  7: 2,  // ADDA: 4–6 PM
+  8: 6,  // AOB Summerfest: 12–6 PM
+};
+
+function formatEventTime(date: Date, isRemote: boolean, eventId?: number): string {
+  if (isRemote) {
+    const end = addHours(date, 1);
+    return `${format(date, "MMMM d, yyyy • h:mm")}–${format(end, "h:mm a")} Pacific Time`;
+  }
+  const duration = eventId !== undefined ? EVENT_DURATION_HOURS[eventId] : undefined;
+  if (duration) {
+    const end = addHours(date, duration);
+    return `${format(date, "MMMM d, yyyy • h:mm")}–${format(end, "h:mm a")}`;
+  }
+  return format(date, "MMMM d, yyyy • h:mm a");
 }
 
-function formatEventTimeShort(date: Date, isRemote: boolean): string {
-  if (!isRemote) return format(date, "MMM d, yyyy · h:mm a");
-  const end = addHours(date, 1);
-  return `${format(date, "MMM d, yyyy · h:mm")}–${format(end, "h:mm a")} Pacific Time`;
+function formatEventTimeShort(date: Date, isRemote: boolean, eventId?: number): string {
+  if (isRemote) {
+    const end = addHours(date, 1);
+    return `${format(date, "MMM d, yyyy · h:mm")}–${format(end, "h:mm a")} Pacific Time`;
+  }
+  const duration = eventId !== undefined ? EVENT_DURATION_HOURS[eventId] : undefined;
+  if (duration) {
+    const end = addHours(date, duration);
+    return `${format(date, "MMM d, yyyy · h:mm")}–${format(end, "h:mm a")}`;
+  }
+  return format(date, "MMM d, yyyy · h:mm a");
 }
 
 function parseSeriesEvent(event: Event) {
@@ -71,7 +91,7 @@ function SeriesSection({ events, isPast }: { events: Event[]; isPast?: boolean }
 
         <div className="mt-4">
           <a
-            href="https://tinyurl.com/progotisummer26"
+            href="http://tiny.cc/v7t6101"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-primary text-primary-foreground text-sm font-semibold hover:bg-primary/90 transition-colors"
@@ -112,7 +132,7 @@ function SeriesSection({ events, isPast }: { events: Event[]; isPast?: boolean }
                   <div className="flex flex-wrap items-center gap-x-3 gap-y-1 mt-1.5">
                     <span className="flex items-center gap-1 text-xs text-muted-foreground/80">
                       <Calendar className="w-3 h-3 text-accent flex-shrink-0" />
-                      {event.date ? formatEventTimeShort(new Date(event.date), event.location === "Remote") : "Date TBA"}
+                      {event.date ? formatEventTimeShort(new Date(event.date), event.location === "Remote", event.id) : "Date TBA"}
                     </span>
                     <span className="flex items-center gap-1 text-xs text-muted-foreground/80">
                       <MapPin className="w-3 h-3 text-accent flex-shrink-0" />
@@ -257,7 +277,7 @@ export function Events() {
                     <div className="flex flex-col gap-2 text-sm text-muted-foreground/80">
                       <div className="flex items-center gap-2">
                         <Calendar className="w-4 h-4 text-accent" />
-                        <span>{event.date ? formatEventTime(new Date(event.date), false) : "Date TBA"}</span>
+                        <span>{event.date ? formatEventTime(new Date(event.date), false, event.id) : "Date TBA"}</span>
                       </div>
                       <div className="flex items-center gap-2">
                         <MapPin className="w-4 h-4 text-accent" />
@@ -328,7 +348,7 @@ export function Events() {
                         <div className="flex flex-col gap-2 text-sm text-muted-foreground/80">
                           <div className="flex items-center gap-2">
                             <Calendar className="w-4 h-4 text-accent" />
-                            <span>{event.date ? formatEventTime(new Date(event.date), event.location === "Remote") : "Date TBA"}</span>
+                            <span>{event.date ? formatEventTime(new Date(event.date), event.location === "Remote", event.id) : "Date TBA"}</span>
                           </div>
                           <div className="flex items-center gap-2">
                             <MapPin className="w-4 h-4 text-accent" />

@@ -1,8 +1,9 @@
 import type { Event, TeamMember } from "@shared/schema";
 import edenGardensImg from "@assets/Eden_Gardens.jpg";
-import addaPartyImg from "@assets/adda-party.svg";
+import addaPartyImg from "@assets/ADDA_Aug1_Event.png";
 import coffeeChatImg from "@assets/coffee-chat.JPG";
 import hikingImg from "@assets/Hiking_Rancho_Antonio.JPG";
+import aobSummerfestImg from "@assets/AOB_SummerFest.png";
 import subhamoyImg from "@assets/Subhamoy_Das_1769321243254.jpg";
 import richaImg from "@assets/Richa_Bhattacharya_1769321243255.png";
 import mohiniImg from "@assets/Mohini_Dutta_1769321243256.png";
@@ -81,12 +82,24 @@ export const EVENTS: Event[] = [
   },
   {
     id: 7,
-    title: "ADDA — Community Social & Game Night",
+    title: "ADDA — Connect & Chill",
     description:
-      "Join us for a relaxed community hangout with games, breakout groups, and opportunities to connect with fellow members",
+      "Join us for a relaxed community hangout with opportunities to connect with fellow members",
     date: new Date("2026-08-01T16:00:00"),
     location: "In-Person — 3165 Porter Drive, Stanford Research Park, Palo Alto, CA",
     imageUrl: addaPartyImg,
+    isUpcoming: true,
+    registrationUrl: null,
+    speaker: null,
+  },
+  {
+    id: 8,
+    title: "AOB Summerfest",
+    description:
+      "Celebrating Bay Area Bangaliyana. Food, Culture, Music, Friends and More!",
+    date: new Date("2026-08-16T12:00:00"),
+    location: "40000 Paseo Padre Pkwy, Fremont, CA",
+    imageUrl: aobSummerfestImg,
     isUpcoming: true,
     registrationUrl: null,
     speaker: null,
