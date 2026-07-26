@@ -27,12 +27,14 @@ const EVENT_DURATION_HOURS: Record<number, number> = {
 function formatEventTime(date: Date, isRemote: boolean, eventId?: number): string {
   if (isRemote) {
     const end = addHours(date, 1);
-    return `${format(date, "MMMM d, yyyy • h:mm")}–${format(end, "h:mm a")} Pacific Time`;
+    const sf = format(date, "a") !== format(end, "a") ? "h:mm a" : "h:mm";
+    return `${format(date, `MMMM d, yyyy • ${sf}`)}–${format(end, "h:mm a")} Pacific Time`;
   }
   const duration = eventId !== undefined ? EVENT_DURATION_HOURS[eventId] : undefined;
   if (duration) {
     const end = addHours(date, duration);
-    return `${format(date, "MMMM d, yyyy • h:mm")}–${format(end, "h:mm a")}`;
+    const sf = format(date, "a") !== format(end, "a") ? "h:mm a" : "h:mm";
+    return `${format(date, `MMMM d, yyyy • ${sf}`)}–${format(end, "h:mm a")}`;
   }
   return format(date, "MMMM d, yyyy • h:mm a");
 }
@@ -40,12 +42,14 @@ function formatEventTime(date: Date, isRemote: boolean, eventId?: number): strin
 function formatEventTimeShort(date: Date, isRemote: boolean, eventId?: number): string {
   if (isRemote) {
     const end = addHours(date, 1);
-    return `${format(date, "MMM d, yyyy · h:mm")}–${format(end, "h:mm a")} Pacific Time`;
+    const sf = format(date, "a") !== format(end, "a") ? "h:mm a" : "h:mm";
+    return `${format(date, `MMM d, yyyy · ${sf}`)}–${format(end, "h:mm a")} Pacific Time`;
   }
   const duration = eventId !== undefined ? EVENT_DURATION_HOURS[eventId] : undefined;
   if (duration) {
     const end = addHours(date, duration);
-    return `${format(date, "MMM d, yyyy · h:mm")}–${format(end, "h:mm a")}`;
+    const sf = format(date, "a") !== format(end, "a") ? "h:mm a" : "h:mm";
+    return `${format(date, `MMM d, yyyy · ${sf}`)}–${format(end, "h:mm a")}`;
   }
   return format(date, "MMM d, yyyy · h:mm a");
 }
