@@ -88,8 +88,8 @@ export const EVENTS: Event[] = [
     date: new Date("2026-08-01T16:00:00"),
     location: "In-Person — 3165 Porter Drive, Stanford Research Park, Palo Alto, CA",
     imageUrl: addaPartyImg,
-    isUpcoming: true,
-    registrationUrl: "https://www.eventbrite.com/e/progotis-adda-party-tickets-1994406568735?aff=oddtdtcreator&keep_tld=true",
+    isUpcoming: false,
+    registrationUrl: null,
     speaker: null,
   },
   {
