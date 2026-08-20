@@ -100,7 +100,7 @@ export const EVENTS: Event[] = [
     date: new Date("2026-08-16T12:00:00"),
     location: "40000 Paseo Padre Pkwy, Fremont, CA",
     imageUrl: aobSummerfestImg,
-    isUpcoming: true,
+    isUpcoming: false,
     registrationUrl: null,
     speaker: null,
   },
@@ -109,7 +109,7 @@ export const EVENTS: Event[] = [
     title: "Career Navigation Series: Recruiting & Resume Workshop",
     description:
       "Learn what hiring managers really look for, sharpen your resume, and get your questions answered in an open Q&A",
-    date: new Date("2026-08-22T11:00:00"),
+    date: new Date("2026-08-22T12:30:00"),
     location: "Remote",
     imageUrl: null,
     isUpcoming: true,
